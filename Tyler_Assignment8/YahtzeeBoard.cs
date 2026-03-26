@@ -27,7 +27,7 @@ namespace Tyler_Assignment8
         }
 
         // Remove all scores from the categories
-        public void removeScores()
+        public void RemoveScores()
         {
             foreach (var key in categories.Keys.ToList())
             {
@@ -36,13 +36,13 @@ namespace Tyler_Assignment8
         }
 
         // Gets the categories associated with scores
-        public Dictionary<string, int?> getBoard()
+        public Dictionary<string, int?> GetBoard()
         {
             return categories;
         }
 
         // Calculates the total score of all catagories
-        public int getTotalScore()
+        public int TotalScore()
         {
             int totalScore = categories.Values.Where(score => score.HasValue).Sum(score => score.Value);
             return totalScore;
@@ -59,6 +59,22 @@ namespace Tyler_Assignment8
             {
                 return false;
             }
+        }
+
+        // List of all upper categories
+        public string[] GetUpperCategories()
+        {
+            return new string[] { "1s", "2s", "3s", "4s", "5s", "6s"};
+        }
+
+        // Checks for if the Upper Bonus applies
+        public int UpperCategoryBonus()
+        {
+            int upperTotal = categories
+                .Where(c => GetUpperCategories().Contains(c.Key) && c.Value.HasValue)
+                .Sum(c => c.Value.Value);
+
+            return upperTotal >= 63 ? 35 : 0;
         }
 
         // Checks for a straight in a unique sorted list

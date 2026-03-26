@@ -53,7 +53,7 @@ namespace Tyler_Assignment8.DisplayLogic
                 string category = entry.Key;
                 int points = entry.Value ?? 0;
 
-                if (dice != null && logic != null)
+                if(dice != null && logic != null && logic.isCategoryScored(category))
                 {
                     Console.Write($"{category,-12} {points,-3} ({logic.calculateCategoryScore(entry.Key, dice)})");
                 } else
@@ -85,6 +85,12 @@ namespace Tyler_Assignment8.DisplayLogic
         public void TotalScore(int totalScore)
         {
             Console.WriteLine($"Total: {totalScore}");
+        }
+
+        // Displays the upper bonus if the player has 63 or more points in the upper categories
+        public void DisplayBonus(int upperPoints)
+        {
+            Console.WriteLine($"Upper Bonus: 35");
         }
     }
 }
