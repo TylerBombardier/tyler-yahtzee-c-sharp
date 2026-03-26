@@ -12,11 +12,13 @@ namespace Tyler_Assignment8.DisplayLogic
     {
         public YahtzeeDisplay() { }
 
+        // Displays the round number at the start of each round
         public void RoundNumber(int roundNumber)
         {
             Console.Write($"\n--- Round {roundNumber} ---\n");
         }
 
+        // Displays which die was rolled
         public void RollingDie(int[] rolledDie)
         {
             Console.Write("\nRolling Dice... ");
@@ -29,6 +31,7 @@ namespace Tyler_Assignment8.DisplayLogic
             Console.WriteLine();
         }
 
+        // Displays the outcome of the rolled die
         public void DiceOutcomes(Die[] dice)
         {
             Console.Write("\nYou rolled the following:\n");
@@ -39,6 +42,7 @@ namespace Tyler_Assignment8.DisplayLogic
             Console.WriteLine();
         }
 
+        // Displays the score-card with the current scores for each category
         public void CategoryScores(Dictionary<string, int?> scores, Die[] dice = null, YahtzeeBoard logic = null)
         {
             Console.WriteLine($"\n{"Category:",-12} {"Points:",-12}");
@@ -63,18 +67,21 @@ namespace Tyler_Assignment8.DisplayLogic
             Console.WriteLine(new string('-', 15));
         }
 
+        // Displays the prompt for the user to choose a category at the end of their rolls
         public void ChooseCategoryPrompt()
         {
             Console.WriteLine("\nChoose a category, or 'show' for score-card");
             Console.WriteLine("Choice (<category>/show): ");
         }
 
+        // Displays the prompt for the user to choose a category, pick dice to re-roll, or show the score-card
         public void InputPrompt()
         {
             Console.WriteLine("\nSelect a category, pick the dice to re-roll (Ex. 1,2,3) or 'show' for score-card");
             Console.WriteLine("Choice (<category>/#,#,#/show): ");
         }
 
+        // Displays the total score at the end of the game
         public void TotalScore(int totalScore)
         {
             Console.WriteLine($"Total: {totalScore}");

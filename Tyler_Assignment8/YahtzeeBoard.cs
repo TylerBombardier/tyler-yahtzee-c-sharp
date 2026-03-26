@@ -26,6 +26,7 @@ namespace Tyler_Assignment8
             };
         }
 
+        // Remove all scores from the categories
         public void removeScores()
         {
             foreach (var key in categories.Keys.ToList())
@@ -34,17 +35,20 @@ namespace Tyler_Assignment8
             }
         }
 
+        // Gets the categories associated with scores
         public Dictionary<string, int?> getBoard()
         {
             return categories;
         }
 
+        // Calculates the total score of all catagories
         public int getTotalScore()
         {
             int totalScore = categories.Values.Where(score => score.HasValue).Sum(score => score.Value);
             return totalScore;
         }
 
+        // Checks if the category is scored or not and returns a boolean if true or false
         public bool isCategoryScored(string category_name)
         {
             if (categories[category_name] == null)
@@ -57,13 +61,14 @@ namespace Tyler_Assignment8
             }
         }
 
-        private bool CheckStraight(List<int> values, int length)
+        // Checks for a straight in a unique sorted list
+        private bool CheckStraight(List<int> uniqueSortedList, int length)
         {
             int count = 1;
 
-            for (int i = 1; i < values.Count; i++)
+            for (int i = 1; i < uniqueSortedList.Count; i++)
             {
-                if (values[i] == values[i - 1] + 1)
+                if (uniqueSortedList[i] == uniqueSortedList[i - 1] + 1)
                 {
                     count++;
                     if (count >= length)
@@ -78,6 +83,7 @@ namespace Tyler_Assignment8
             return false;
         }
 
+        // Calculates a score with a given category and a hand of dice
         public int calculateCategoryScore(string category, Die[] dice)
         {
             var values = dice.Select(d => d.Value).ToList();
